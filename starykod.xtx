@@ -1,0 +1,41 @@
+print("---------------------------")
+print("Evidence pojistenych")
+print("---------------------------")
+print("Vyber si akci:")
+print("1- Pridat nového pojištěného")
+print("2- Vypsat vsechny pojištěného")
+print("3-Vyhledat pojisteneho")
+print("4-Konec")
+task = input("")
+while task != "4":
+    if task == "1":
+        jmeno = input("Zadej jméno: ")
+        prijmeni = input("Zadej příjmení: ")
+        vek = input("Zadej věk: ")
+        telefon = input("Zadej telefonní číslo: ")
+        druh_pojisteni = input("Zadej druh pojištění: ")
+        narodnost = input("Zadej národnost: ")
+        novy_pojistenec = Pojistenec(jmeno, prijmeni, vek, telefon, druh_pojisteni, narodnost)
+        evidence.pridat_pojistence(novy_pojistenec)
+        print("Pojištěný byl přidán.")
+    elif task == "2":
+        evidence.vypsat_pojistence()
+    elif task == "3":
+        jmeno = input("Zadej jméno pojištěného: ")
+        if not jmeno:
+            continue
+        prijmeni = input("Zadej příjmení pojištěného: ")
+        if not prijmeni:
+            continue
+        durh = input("Zadej druh pojištění: ")
+        evidence.vyhledat_pojistence(jmeno, prijmeni, druh_pojisteni)
+    else:
+        print("Neplatná volba, zkus to znovu.")
+
+    print("---------------------------")
+    print("Vyber si akci:")
+    print("1- Pridat nového pojištěného")
+    print("2- Vypsat vsechny pojištěného")
+    print("3-Vyhledat pojisteneho")
+    print("4-Konec")
+    task = input("")
