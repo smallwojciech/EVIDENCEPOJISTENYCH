@@ -1,9 +1,11 @@
 from evidence import EvidencePojistenych
 from pojistenec import Pojistenec
+from validace import Validator
 
 class UzivatelskeRozhrani:
-    def __init__(self, evidence: EvidencePojistenych):
+    def __init__(self, evidence: EvidencePojistenych, validace: Validator):
         self.evidence = evidence
+        self.validace = validace
 
     def vypis_menu(self):
         while True:
@@ -19,9 +21,25 @@ class UzivatelskeRozhrani:
             task = input().strip()
 
             if task == "1":
-                jmeno = input("Zadej jméno: ").strip()
-                prijmeni = input("Zadej příjmení: ").strip()
-                vek = input("Zadej věk: ").strip()
+                while True:
+                    jmeno = input("Zadej jméno: ").strip()
+                    if not self.validace.jmeno_je_validni(jmeno):
+                        print("Jméno v neplatném formátu.\n")
+                        continue
+                    break
+                while True:
+                    prijmeni = input("Zadej příjmení: ").strip()
+                    if not self.validace.prijmeni_je_validni(prijmeni):
+                        print("Příjmení v neplatném formátu.\n")
+                        continue
+                    break
+                while True:
+                    vek = input("Zadej věk: ").strip()
+                    if not self.validace.vek_je_validni(vek):
+                        print("Věk v neplatném formátu.\n")
+                        continue
+                    break
+                
                 telefon = input("Zadej telefonní číslo: ").strip()
                 druh_pojisteni = input("Zadej druh pojištění: ").strip()
                 narodnost = input("Zadej národnost: ").strip()
